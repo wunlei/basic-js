@@ -9,7 +9,6 @@ module.exports = function repeater(str, options) {
   let additionSeparator;
   let additionRepeatTimes;
 
-
   if (options['addition'] !== undefined) {
     addition = options['addition'] + '';
   }
@@ -28,19 +27,15 @@ module.exports = function repeater(str, options) {
 
   if (!options['additionRepeatTimes']) {
     additionRepeatTimes = 1;
-  } else {additionRepeatTimes = options['additionRepeatTimes']; }
-
+  } else { additionRepeatTimes = options['additionRepeatTimes']; }
 
   let addSeparator = [];
-
   if (addition !== undefined) {
-      for (let i = 0; i < additionRepeatTimes; i++) {
-        addSeparator.push(addition);
-      }
-      addSeparator = addSeparator.join(additionSeparator);
+    for (let i = 0; i < additionRepeatTimes; i++) {
+      addSeparator.push(addition);
     }
-  
-
+    addSeparator = addSeparator.join(additionSeparator);
+  }
 
   for (let i = 0; i < repeatTimes; i++) {
     arr.push(str);
@@ -48,14 +43,14 @@ module.exports = function repeater(str, options) {
 
   let arr2 = arr;
 
-
-    if (addSeparator.length > 0) {
-      arr2 = arr.map(function (arrVal) {
-        return arrVal + addSeparator;
-      }
-      )
+  if (addSeparator.length > 0) {
+    arr2 = arr.map(function (arrVal) {
+      return arrVal + addSeparator;
     }
-     if (arr2.length > 1) {    
+    )
+  }
+  
+  if (arr2.length > 1) {
     arr2 = arr2.join(separator);
   } else { return arr2[0]; }
 
