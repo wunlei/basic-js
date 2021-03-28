@@ -13,17 +13,20 @@ const chainMaker = {
   },
 
   removeLink(position) {
-    if (typeof position !== 'number') {
+    if (typeof position !== 'number' || position < 1 || position > chainMaker['chain'].length) {
+      chainMaker['chain'] = [];
       throw new Error();
     } else {
-    chainMaker['chain'].splice(position - 1, 1);
-    return chainMaker;
+      chainMaker['chain'].splice(position - 1, 1);
+      return chainMaker;
     }
   },
+
   reverseChain() {
     chainMaker['chain'].reverse();
     return chainMaker;
   },
+  
   finishChain() {
     let result = chainMaker['chain'].join('~~');
     chainMaker['chain'] = [];
@@ -32,5 +35,3 @@ const chainMaker = {
 };
 
 module.exports = chainMaker;
-
-console.log(chainMaker.addLink('GHI').addLink(null).reverseChain().addLink(333).reverseChain().reverseChain().addLink(0).reverseChain().reverseChain().addLink('GHI').finishChain());
